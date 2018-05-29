@@ -15,6 +15,7 @@ app = Flask(__name__)
 line_bot_api = LineBotApi('dc34c9fbeef195c821b30173bac3632d')
 handler = WebhookHandler('o2xY5OiKwx/3WioastnjkAvXN2qTin/RVUdm6n8Q6RCDvnPRACs1gxZkhkJtPvhpeXoz3U8p5uXl2sFY699/o83FlR7NDlDVtcbtj86FEAMILq8FpQdDQdSI/HlraxHeBHDePmTab29hZc/xvDwsXwdB04t89/1O/w1cDnyilFU=')
 
+
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
@@ -22,7 +23,7 @@ def callback():
 
     # get request body as text
     body = request.get_data(as_text=True)
-    print("Request body: " + body, "Signature: " + signature)
+    app.logger.info("Request body: " + body)
 
     # handle webhook body
     try:
@@ -35,14 +36,10 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    #print("Handle: reply_token: " + event.reply_token + ", message: " + event.message.text)
-    content = "{}: {}".format(event.source.user_id, event.message.text)
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=content))
+        TextSendMessage(text=event.message.text))
 
 
-import os
 if __name__ == "__main__":
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+    app.run()
