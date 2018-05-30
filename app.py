@@ -295,7 +295,7 @@ def searchjob(text):
 
     r = requests.get(url)
 
-    print (r)
+    print (r.text)
 
 
 
