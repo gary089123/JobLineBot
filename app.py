@@ -284,7 +284,7 @@ def parse(string,user):
         return [TextSendMessage(text='開發中')]
 
 
-    elif text == 'help':
+    elif text[0] == 'help':
         return [TextSendMessage(text='開發中'),TextSendMessage(text='開發中')]
     else:
         return [TextSendMessage(text='請以 \'hi\' 開始，更多使用方法請使用 \'help\'')]
