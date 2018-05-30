@@ -278,8 +278,10 @@ def parse(string,user):
 
     elif text[0] == '條件' and len(text)==5:
         data = searchjob(text)
-
-        return [TextSendMessage(text='開發中')]
+        respone=[]
+        for i in data:
+            respone.append(TextSendMessage(text=i))
+        return response
 
 
     elif text[0] == 'help':
@@ -302,14 +304,18 @@ def searchjob(text):
 
     print (jdata)
     data = jdata['data']
+
+    reply_string=[]
     for i in data:
+        reply_string.append('職位名稱:'+i["JOB"]+'/n公司:'+i["NAME"]+'/n描述:'+i["DESCRIPTION"]+'/n網址:'+i["LINK"])
         print( '職位名稱:',i["JOB"])
         print( '公司:',i["NAME"])
         print( '描述:',i["DESCRIPTION"])
         print( '網址:', i["LINK"])
-        
 
-    return data
+    
+
+    return reply_string
 
 
 
