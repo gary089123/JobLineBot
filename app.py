@@ -273,6 +273,12 @@ def parse(string,user):
         )
         return response
 
+
+
+    elif text[0] == '條件' and len(text)==5:
+        result = searchjob(text)
+
+
     elif text == 'help':
         return TextSendMessage(text='開發中')
     else:
@@ -280,6 +286,17 @@ def parse(string,user):
 
 
         
+def searchjob(text):
+    import requests
+    url = 'http://www.104.com.tw/i/apis/jobsearch.cfm?cat='+text[1]+'&role='+text[2]+'&fmt=8&order=1&cols=JOB,NAME,LINK,DESCRIPTION&exp='+text[3]
+    if not text[4] == 'X':
+        url = url+'&sltp=S&slmin='+text[4]+'0000'
+
+    r = requests.get(url)
+
+    print (r)
+
+
 
 
 
