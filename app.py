@@ -40,11 +40,9 @@ def handle_message(event):
     print ('User : ',event.source.user_id)
     reply = parse(event.message.text,event.source.user_id)
 
-    for i in reply:
-
-        line_bot_api.push_message(
-            event.source.user_id,
-            i)
+    line_bot_api.reply_message(
+        event.reply_token,
+        reply)
 
 
 
