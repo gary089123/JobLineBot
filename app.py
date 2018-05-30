@@ -157,7 +157,7 @@ def parse(string,user):
         return response
 
 
-
+    ##############  條件  ##############
 
     elif text[0] == '條件' and len(text)==2:
 
@@ -207,6 +207,36 @@ def parse(string,user):
                     MessageTemplateAction(
                         label='兩年以上',
                         text= string+',2'
+                    )
+                    
+                ]
+            )
+        )
+        return response
+
+    elif text[0] == '條件' and len(text)==4:
+
+        response = TemplateSendMessage(
+            alt_text='Buttons template',
+            template=ButtonsTemplate(
+                title='薪資',
+                text='請選擇期望薪資(月薪)',
+                actions=[
+                    MessageTemplateAction(
+                        label='不拘',
+                        text= string+',X'
+                    ),
+                    MessageTemplateAction(
+                        label='四萬以上',
+                        text= string+',4'
+                    ),
+                    MessageTemplateAction(
+                        label='五萬以上',
+                        text= string+',5'
+                    ),
+                    MessageTemplateAction(
+                        label='六萬以上',
+                        text= string+',6'
                     )
                     
                 ]
