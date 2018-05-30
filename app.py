@@ -48,7 +48,7 @@ def parse(text):
 
     ##############  學院  ##############
     if text =='資電學院':
-        return 0
+        return TextSendMessage(text='開發中'))
     elif text =='工學學院':
         return 0
     elif text =='理學院':
