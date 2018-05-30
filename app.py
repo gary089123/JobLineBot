@@ -50,13 +50,13 @@ def parse(text):
     if text =='資電學院':
         return 0
     elif text =='工學學院':
-        return TextSendMessage(text='開發中')
+        return 0
     elif text =='理學院':
-        return TextSendMessage(text='開發中')
+        return 0
     elif text =='管理學院':
-        return TextSendMessage(text='開發中')
+        return 0
     elif text =='文學院':
-        return TextSendMessage(text='開發中')
+        return 0
     else:
         response = TemplateSendMessage(
             alt_text='Buttons template',
@@ -67,22 +67,6 @@ def parse(text):
                     MessageTemplateAction(
                         label='資電學院',
                         text='資電學院'
-                    ),
-                    MessageTemplateAction(
-                        label='工學學院',
-                        text='工學學院'
-                    ),
-                    MessageTemplateAction(
-                        label='理學院',
-                        text='理學院'
-                    ),
-                    MessageTemplateAction(
-                        label='管理學院',
-                        text='管理學院'
-                    ),
-                    MessageTemplateAction(
-                        label='文學院',
-                        text='文學院'
                     )
                 ]
             )
