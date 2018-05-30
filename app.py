@@ -39,9 +39,12 @@ def callback():
 def handle_message(event):
     print ('User : ',event.source.user_id)
     reply = parse(event.message.text,event.source.user_id)
-    line_bot_api.reply_message(
-        event.reply_token,
-        reply)
+
+    for i in reply:
+
+        line_bot_api.reply_message(
+            event.reply_token,
+            i)
 
 
 
@@ -72,11 +75,11 @@ def parse(string,user):
         )
         return response
     elif text[0] =='工學學院':
-        return TextSendMessage(text='開發中')
+        return [TextSendMessage(text='開發中')]
     elif text[0] =='理學院':
-        return TextSendMessage(text='開發中')
+        return [TextSendMessage(text='開發中')]
     elif text[0] =='管理學院':
-        return TextSendMessage(text='開發中')
+        return [TextSendMessage(text='開發中')]
 
     ##############  資工系  ##############
 
@@ -106,7 +109,7 @@ def parse(string,user):
                 ]
             )
         )
-        return response
+        return [response]
 
     elif text[0] == 'more1':
         response = TemplateSendMessage(
@@ -134,7 +137,7 @@ def parse(string,user):
                 ]
             )
         )
-        return response
+        return [response]
 
     elif text[0] == 'more2':
         response = TemplateSendMessage(
@@ -154,7 +157,7 @@ def parse(string,user):
                 ]
             )
         )
-        return response
+        return [response]
 
 
     ##############  條件  ##############
@@ -182,7 +185,7 @@ def parse(string,user):
                 ]
             )
         )
-        return response
+        return [response]
 
     elif text[0] == '條件' and len(text)==3:
 
@@ -212,7 +215,7 @@ def parse(string,user):
                 ]
             )
         )
-        return response
+        return [response]
 
     elif text[0] == '條件' and len(text)==4:
 
@@ -242,7 +245,7 @@ def parse(string,user):
                 ]
             )
         )
-        return response
+        return [response]
     
     ##############  學院  ##############
     elif text[0]=='hi':
@@ -271,19 +274,20 @@ def parse(string,user):
                 ]
             )
         )
-        return response
+        return [response]
 
 
 
     elif text[0] == '條件' and len(text)==5:
-        searchjob(text)
-        return TextSendMessage(text='開發中')
+        data = searchjob(text)
+
+        return [TextSendMessage(text='開發中')]
 
 
     elif text == 'help':
-        return TextSendMessage(text='開發中')
+        return [TextSendMessage(text='開發中'),TextSendMessage(text='開發中')]
     else:
-        return TextSendMessage(text='請以 \'hi\' 開始，更多使用方法請使用 \'help\'')
+        return [TextSendMessage(text='請以 \'hi\' 開始，更多使用方法請使用 \'help\'')]
 
 
         
@@ -307,7 +311,7 @@ def searchjob(text):
         print( '網址:', i["LINK"])
         
 
-
+    return data
 
 
 
