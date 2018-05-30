@@ -307,7 +307,7 @@ def searchjob(text):
 
     reply_string=[]
     for i in data:
-        reply_string.append('職位名稱:'+i["JOB"]+'/n公司:'+i["NAME"]+'/n描述:'+i["DESCRIPTION"]+'/n網址:'+i["LINK"])
+        reply_string.append('職位名稱:'+i["JOB"]+'\n公司:'+i["NAME"]+'\n描述:'+i["DESCRIPTION"]+'\n網址:'+i["LINK"])
         print( '職位名稱:',i["JOB"])
         print( '公司:',i["NAME"])
         print( '描述:',i["DESCRIPTION"])
