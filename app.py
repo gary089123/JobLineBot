@@ -276,7 +276,8 @@ def parse(string,user):
 
 
     elif text[0] == '條件' and len(text)==5:
-        result = searchjob(text)
+        searchjob(text)
+        return TextSendMessage(text='開發中')
 
 
     elif text == 'help':
