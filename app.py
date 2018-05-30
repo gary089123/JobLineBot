@@ -38,16 +38,26 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     print ('Token : ',event)
-    reply = parse(event.message.text)
+    reply = parse(event.message.text,event.source.userId)
     line_bot_api.reply_message(
         event.reply_token,
         reply)
 
 
-def parse(text):
+UsrInput ={}
+
+def parse(text,user):
+
+    if user in UserInput:
+        print (UsrInput[user])
+    else:
+        print ('new')
+
+    if not user in UsrInput:
+        return TextSendMessage(text='請以 \'hi\' 開始或重設，更多使用方法請使用 \'help\'')
 
     ##############  學院  ##############
-    if text =='資電學院':
+    elif text =='資電學院':
         response = TemplateSendMessage(
             alt_text='Buttons template',
             template=ButtonsTemplate(
@@ -60,25 +70,27 @@ def parse(text):
                     ),
                     MessageTemplateAction(
                         label='電機系',
-                        text='電機系'
+                        text='資工系'
                     ),
                     MessageTemplateAction(
                         label='通訊系',
-                        text='通訊系'
+                        text='資工系'
                     )
                 ]
             )
         )
         return response
     elif text =='工學學院':
-        return 0
+        return TextSendMessage(text='開發中')
     elif text =='理學院':
-        return 0
+        return TextSendMessage(text='開發中')
     elif text =='管理學院':
-        return 0
-    elif text =='文學院':
-        return 0
-    else:
+        return TextSendMessage(text='開發中')
+
+    elif text=='hi':
+        
+        UsrInput[user]=['hi']
+        
         response = TemplateSendMessage(
             alt_text='Buttons template',
             template=ButtonsTemplate(
@@ -105,6 +117,12 @@ def parse(text):
             )
         )
         return response
+
+    elif text == 'help':
+        return TextSendMessage(text='開發中')
+    else:
+        return TextSendMessage(text='請以 \'hi\' 開始或重設，更多使用方法請使用 \'help\'')
+
 
         
 
