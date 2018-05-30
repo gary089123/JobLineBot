@@ -42,7 +42,6 @@ def handle_message(event):
         TemplateSendMessage(
     alt_text='Buttons template',
     template=ButtonsTemplate(
-        thumbnail_image_url='https://example.com/image.jpg',
         title='Menu',
         text='Please select',
         actions=[
