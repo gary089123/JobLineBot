@@ -89,15 +89,15 @@ def parse(string,user):
                 actions=[
                     MessageTemplateAction(
                         label='軟體設計工程師',
-                        text='資工系,2007001004'
+                        text='條件,2007001004'
                     ),
                     MessageTemplateAction(
                         label='韌體設計工程師',
-                        text='資工系,2007001005'
+                        text='條件,2007001005'
                     ),
                     MessageTemplateAction(
                         label='演算法開發工程師',
-                        text='資工系,2007001012'
+                        text='條件,2007001012'
                     ),
                     MessageTemplateAction(
                         label='更多',
@@ -117,15 +117,15 @@ def parse(string,user):
                 actions=[
                     MessageTemplateAction(
                         label='電玩程式設計師',
-                        text='資工系,2007001008'
+                        text='條件,2007001008'
                     ),
                     MessageTemplateAction(
                         label='資料庫管理人員',
-                        text='資工系,2007002002'
+                        text='條件,2007002002'
                     ),
                     MessageTemplateAction(
                         label='網路管理工程師',
-                        text='資工系,22007002005'
+                        text='條件,22007002005'
                     ),
                     MessageTemplateAction(
                         label='更多',
@@ -145,11 +145,11 @@ def parse(string,user):
                 actions=[
                     MessageTemplateAction(
                         label='MIS程式設計師',
-                        text='資工系,2007002003'
+                        text='條件,2007002003'
                     ),
                     MessageTemplateAction(
                         label='網路安全分析師',
-                        text='資工系,2007002008'
+                        text='條件,2007002008'
                     ),
                 ]
             )
@@ -159,7 +159,7 @@ def parse(string,user):
 
 
 
-    elif text[0] == '資工系' and len(text)==2:
+    elif text[0] == '條件' and len(text)==2:
 
         response = TemplateSendMessage(
             alt_text='Buttons template',
@@ -179,6 +179,36 @@ def parse(string,user):
                         label='兼職',
                         text= string+',2'
                     ),
+                ]
+            )
+        )
+        return response
+
+    elif text[0] == '條件' and len(text)==3:
+
+        response = TemplateSendMessage(
+            alt_text='Buttons template',
+            template=ButtonsTemplate(
+                title='工作經驗',
+                text='請選擇工作經驗',
+                actions=[
+                    MessageTemplateAction(
+                        label='無工作經驗',
+                        text= string+',-1'
+                    ),
+                    MessageTemplateAction(
+                        label='未滿一年',
+                        text= string+',0'
+                    ),
+                    MessageTemplateAction(
+                        label='一年以上',
+                        text= string+',1'
+                    ),
+                    MessageTemplateAction(
+                        label='兩年以上',
+                        text= string+',2'
+                    )
+                    
                 ]
             )
         )
