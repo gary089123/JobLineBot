@@ -48,7 +48,28 @@ def parse(text):
 
     ##############  學院  ##############
     if text =='資電學院':
-        return TextSendMessage(text='開發中')
+        response = TemplateSendMessage(
+            alt_text='Buttons template',
+            template=ButtonsTemplate(
+                title='系所',
+                text='請選擇畢業系所',
+                actions=[
+                    MessageTemplateAction(
+                        label='資工系',
+                        text='資工系'
+                    ),
+                    MessageTemplateAction(
+                        label='電機系',
+                        text='電機系'
+                    ),
+                    MessageTemplateAction(
+                        label='通訊系',
+                        text='通訊系'
+                    )
+                ]
+            )
+        )
+        return response
     elif text =='工學學院':
         return 0
     elif text =='理學院':
@@ -69,8 +90,20 @@ def parse(text):
                         text='資電學院'
                     ),
                     MessageTemplateAction(
-                        label='資電學院',
-                        text='資電學院'
+                        label='工學院',
+                        text='工學院'
+                    ),
+                    MessageTemplateAction(
+                        label='理學院',
+                        text='理學院'
+                    ),
+                    MessageTemplateAction(
+                        label='管理學院',
+                        text='管理學院'
+                    ),
+                    MessageTemplateAction(
+                        label='文學院',
+                        text='文學院'
                     )
                 ]
             )
