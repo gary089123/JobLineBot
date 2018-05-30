@@ -93,7 +93,7 @@ def parse(string,user):
                     ),
                     MessageTemplateAction(
                         label='韌體設計工程師',
-                        text='資工系.2007001005'
+                        text='資工系,2007001005'
                     ),
                     MessageTemplateAction(
                         label='演算法開發工程師',
@@ -113,7 +113,7 @@ def parse(string,user):
             alt_text='Buttons template',
             template=ButtonsTemplate(
                 title='職務類別',
-                text='請選擇畢業系所',
+                text='請選擇職務類別',
                 actions=[
                     MessageTemplateAction(
                         label='電玩程式設計師',
@@ -141,7 +141,7 @@ def parse(string,user):
             alt_text='Buttons template',
             template=ButtonsTemplate(
                 title='職務類別',
-                text='請選擇畢業系所',
+                text='請選擇職務類別',
                 actions=[
                     MessageTemplateAction(
                         label='MIS程式設計師',
@@ -150,6 +150,34 @@ def parse(string,user):
                     MessageTemplateAction(
                         label='網路安全分析師',
                         text='資工系,2007002008'
+                    ),
+                ]
+            )
+        )
+        return response
+
+
+
+
+    elif text[0] == '資工系' and len(text)==2:
+
+        response = TemplateSendMessage(
+            alt_text='Buttons template',
+            template=ButtonsTemplate(
+                title='身份類別',
+                text='請選擇身份類別',
+                actions=[
+                    MessageTemplateAction(
+                        label='不拘',
+                        text= string+',0'
+                    ),
+                    MessageTemplateAction(
+                        label='全職',
+                        text= string+',1'
+                    ),
+                    MessageTemplateAction(
+                        label='兼職',
+                        text= string+',2'
                     ),
                 ]
             )
