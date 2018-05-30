@@ -37,7 +37,7 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-
+    print ('Token : ',event.reply_token)
     reply = parse(event.message.text)
     line_bot_api.reply_message(
         event.reply_token,
@@ -100,10 +100,6 @@ def parse(text):
                     MessageTemplateAction(
                         label='管理學院',
                         text='管理學院'
-                    ),
-                    MessageTemplateAction(
-                        label='文學院',
-                        text='文學院'
                     )
                 ]
             )
