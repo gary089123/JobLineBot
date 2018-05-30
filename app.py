@@ -73,7 +73,7 @@ def parse(string,user):
                 ]
             )
         )
-        return response
+        return [response]
     elif text[0] =='工學學院':
         return [TextSendMessage(text='開發中')]
     elif text[0] =='理學院':
