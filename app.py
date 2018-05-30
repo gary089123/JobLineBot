@@ -297,7 +297,8 @@ def searchjob(text):
     r = requests.get(url)
 
     print (r.text)
-    data = json.load(r.text)['data']
+    data = json.load(str(r.text))
+    print (data)
     for i in data:
         print( '職位名稱:',i["JOB"])
         print( '公司:',i["NAME"])
