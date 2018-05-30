@@ -45,27 +45,44 @@ def handle_message(event):
 
 
 def parse(text):
+
+    ##############  學院  ##############
     if text =='資電學院':
         return 0
+    elif text =='工學學院':
+        return TextSendMessage(text='開發中')
+    elif text =='理學院':
+        return TextSendMessage(text='開發中')
+    elif text =='管理學院':
+        return TextSendMessage(text='開發中')
+    elif text =='文學院':
+        return TextSendMessage(text='開發中')
     else:
         response = TemplateSendMessage(
             alt_text='Buttons template',
             template=ButtonsTemplate(
-                title='Menu',
-                text='Please select',
+                title='學院',
+                text='請選擇畢業學院',
                 actions=[
-                    PostbackTemplateAction(
-                        label='postback',
-                        text='postback text',
-                        data='action=buy&itemid=1'
+                    MessageTemplateAction(
+                        label='資電學院',
+                        text='資電學院'
                     ),
                     MessageTemplateAction(
-                        label='message',
-                        text='message text'
+                        label='工學學院',
+                        text='工學學院'
                     ),
-                    URITemplateAction(
-                        label='uri',
-                        uri='http://example.com/'
+                    MessageTemplateAction(
+                        label='理學院',
+                        text='理學院'
+                    )
+                    MessageTemplateAction(
+                        label='管理學院',
+                        text='管理學院'
+                    )
+                    MessageTemplateAction(
+                        label='文學院',
+                        text='文學院'
                     )
                 ]
             )
