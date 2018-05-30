@@ -67,6 +67,10 @@ def parse(text):
                     MessageTemplateAction(
                         label='資電學院',
                         text='資電學院'
+                    ),
+                    MessageTemplateAction(
+                        label='資電學院',
+                        text='資電學院'
                     )
                 ]
             )
