@@ -37,30 +37,45 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+
+    reply = parse(event.message.text)
     line_bot_api.reply_message(
         event.reply_token,
-        TemplateSendMessage(
-    alt_text='Buttons template',
-    template=ButtonsTemplate(
-        title='Menu',
-        text='Please select',
-        actions=[
-            PostbackTemplateAction(
-                label='postback',
-                text='postback text',
-                data='action=buy&itemid=1'
-            ),
-            MessageTemplateAction(
-                label='message',
-                text='message text'
-            ),
-            URITemplateAction(
-                label='uri',
-                uri='http://example.com/'
+        reply)
+
+
+def parse(text):
+    if text =='資電學院':
+        return 0
+    else:
+        response = TemplateSendMessage(
+            alt_text='Buttons template',
+            template=ButtonsTemplate(
+                title='Menu',
+                text='Please select',
+                actions=[
+                    PostbackTemplateAction(
+                        label='postback',
+                        text='postback text',
+                        data='action=buy&itemid=1'
+                    ),
+                    MessageTemplateAction(
+                        label='message',
+                        text='message text'
+                    ),
+                    URITemplateAction(
+                        label='uri',
+                        uri='http://example.com/'
+                    )
+                ]
             )
-        ]
-    )
-))
+        )
+        return response
+
+        
+
+
+
 
 
 import os
