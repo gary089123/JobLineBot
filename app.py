@@ -42,8 +42,8 @@ def handle_message(event):
 
     for i in reply:
 
-        line_bot_api.reply_message(
-            event.reply_token,
+        line_bot_api.push_message(
+            event.source.user_id,
             i)
 
 
