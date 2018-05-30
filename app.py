@@ -37,7 +37,7 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    print ('Token : ',event)
+    print ('Token : ',event.source)
     reply = parse(event.message.text,event.source.userId)
     line_bot_api.reply_message(
         event.reply_token,
@@ -48,7 +48,7 @@ UsrInput ={}
 
 def parse(text,user):
 
-    if user in UserInput:
+    if user in UsrInput:
         print (UsrInput[user])
     else:
         print ('new')
@@ -90,7 +90,7 @@ def parse(text,user):
     elif text=='hi':
         
         UsrInput[user]=['hi']
-        
+
         response = TemplateSendMessage(
             alt_text='Buttons template',
             template=ButtonsTemplate(
