@@ -75,11 +75,11 @@ def parse(text):
                     MessageTemplateAction(
                         label='理學院',
                         text='理學院'
-                    )
+                    ),
                     MessageTemplateAction(
                         label='管理學院',
                         text='管理學院'
-                    )
+                    ),
                     MessageTemplateAction(
                         label='文學院',
                         text='文學院'
