@@ -295,8 +295,14 @@ def searchjob(text):
 
     r = requests.get(url)
 
-    print (r.text)
-
+    print (r.text.data)
+    
+    for i in range(0,5):
+        print( '職位名稱:',i["JOB"])
+        print( '公司:',i["NAME"])
+        print( '描述:',i["DESCRIPTION"])
+        print( '網址:', i["LINK"])
+        
 
 
 
