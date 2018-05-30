@@ -37,27 +37,18 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    print ('Token : ',type(event.source))
+    print ('User : ',event.source.user_id)
     reply = parse(event.message.text,event.source.user_id)
     line_bot_api.reply_message(
         event.reply_token,
         reply)
 
 
-UsrInput ={}
 
-def parse(text,user):
-
-    if user in UsrInput:
-        print (UsrInput[user])
-    else:
-        print ('new')
-
-    if not user in UsrInput:
-        return TextSendMessage(text='請以 \'hi\' 開始或重設，更多使用方法請使用 \'help\'')
-
-    ##############  學院  ##############
-    elif text =='資電學院':
+def parse(string,user):
+    text = string.split(",")
+    ##############  系所  ##############
+    if text[0] =='資電學院':
         response = TemplateSendMessage(
             alt_text='Buttons template',
             template=ButtonsTemplate(
@@ -70,27 +61,103 @@ def parse(text,user):
                     ),
                     MessageTemplateAction(
                         label='電機系',
-                        text='資工系'
+                        text='電機系'
                     ),
                     MessageTemplateAction(
                         label='通訊系',
-                        text='資工系'
+                        text='通訊系'
                     )
                 ]
             )
         )
         return response
-    elif text =='工學學院':
+    elif text[0] =='工學學院':
         return TextSendMessage(text='開發中')
-    elif text =='理學院':
+    elif text[0] =='理學院':
         return TextSendMessage(text='開發中')
-    elif text =='管理學院':
+    elif text[0] =='管理學院':
         return TextSendMessage(text='開發中')
 
-    elif text=='hi':
-        
-        UsrInput[user]=['hi']
+    ##############  資工系  ##############
 
+    elif text[0] == '資工系' and len(text)==1:
+        response = TemplateSendMessage(
+            alt_text='Buttons template',
+            template=ButtonsTemplate(
+                title='職務類別',
+                text='請選擇畢業系所',
+                actions=[
+                    MessageTemplateAction(
+                        label='軟體設計工程師',
+                        text='資工系,2007001004'
+                    ),
+                    MessageTemplateAction(
+                        label='韌體設計工程師',
+                        text='資工系.2007001005'
+                    ),
+                    MessageTemplateAction(
+                        label='演算法開發工程師',
+                        text='資工系,2007001012'
+                    ),
+                    MessageTemplateAction(
+                        label='更多',
+                        text='more1'
+                    )
+                ]
+            )
+        )
+        return response
+
+    elif text[0] == 'more1':
+        response = TemplateSendMessage(
+            alt_text='Buttons template',
+            template=ButtonsTemplate(
+                title='職務類別',
+                text='請選擇畢業系所',
+                actions=[
+                    MessageTemplateAction(
+                        label='電玩程式設計師',
+                        text='資工系,2007001008'
+                    ),
+                    MessageTemplateAction(
+                        label='資料庫管理人員',
+                        text='資工系,2007002002'
+                    ),
+                    MessageTemplateAction(
+                        label='網路管理工程師',
+                        text='資工系,22007002005'
+                    ),
+                    MessageTemplateAction(
+                        label='更多',
+                        text='more2'
+                    )
+                ]
+            )
+        )
+        return response
+
+    elif text[0] == 'more2':
+        response = TemplateSendMessage(
+            alt_text='Buttons template',
+            template=ButtonsTemplate(
+                title='職務類別',
+                text='請選擇畢業系所',
+                actions=[
+                    MessageTemplateAction(
+                        label='MIS程式設計師',
+                        text='資工系,2007002003'
+                    ),
+                    MessageTemplateAction(
+                        label='網路安全分析師',
+                        text='資工系,2007002008'
+                    ),
+                ]
+            )
+        )
+        return response
+    
+    ##############  學院  ##############
+    elif text[0]=='hi':
         response = TemplateSendMessage(
             alt_text='Buttons template',
             template=ButtonsTemplate(
@@ -121,7 +188,7 @@ def parse(text,user):
     elif text == 'help':
         return TextSendMessage(text='開發中')
     else:
-        return TextSendMessage(text='請以 \'hi\' 開始或重設，更多使用方法請使用 \'help\'')
+        return TextSendMessage(text='請以 \'hi\' 開始，更多使用方法請使用 \'help\'')
 
 
         
