@@ -47,6 +47,7 @@ def handle_message(event):
 
 
 def parse(string,user):
+    res=[]
     text = string.split(",")
     ##############  系所  ##############
     if text[0] =='資電學院':
@@ -278,10 +279,9 @@ def parse(string,user):
 
     elif text[0] == '條件' and len(text)==5:
         data = searchjob(text)
-        respone=[]
         for i in data:
-            respone.append(TextSendMessage(text=i))
-        return response
+            res.append(TextSendMessage(text=i))
+        return res
 
 
     elif text[0] == 'help':
