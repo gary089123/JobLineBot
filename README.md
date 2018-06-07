@@ -16,16 +16,17 @@
 ## 操作
 
 以 hi 開始問答，並選擇畢業學院
-![Alt text](demopic/1.jpg)
+<br><img src="demopic/1.jpg" width="400">
 選擇畢業系所
-![Alt text](demopic/2.jpg)
+<br><img src="demopic/2.jpg" width="400">
 選擇想要的職務類別，“更多”可以列出更多
-![Alt text](demopic/3.jpg)
+<br><img src="demopic/3.jpg" width="400">
 選擇身份類別
-![Alt text](demopic/4.jpg)
+<br><img src="demopic/4.jpg" width="400">
 選擇工作經驗
-![Alt text](demopic/5.jpg)
+<br><img src="demopic/5.jpg" width="400">
 選擇期望薪資
-![Alt text](demopic/6.jpg)
+<br><img src="demopic/6.jpg" width="400">
 會列出5個推薦職缺
-![Alt text](demopic/7.jpg)
+<br><img src="demopic/7.jpg" width="400">
+
